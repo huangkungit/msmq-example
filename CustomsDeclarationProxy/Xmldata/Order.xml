@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XmlMessage>
+  <Declaration>
+    <ORDER_FORM_HEAD>
+      <ORG_ORDER_NO>201402230001</ORG_ORDER_NO>
+      <TRADE_CODE>3205242177</TRADE_CODE>
+      <TRADE_NAME>兰亭集势（苏州）贸易有限公司</TRADE_NAME>
+      <SPLY_CODE>3205242177</SPLY_CODE>
+      <SPLY_NAME>兰亭集势（苏州）贸易有限公司</SPLY_NAME>
+      <ORDER_STATUS>S</ORDER_STATUS>
+      <CARRI_CODE>3205242177</CARRI_CODE>
+      <CARRI_NAME>兰亭集势（苏州）贸易有限公司</CARRI_NAME>
+      <CARRI_NO>491089393792350</CARRI_NO>
+      <CARRI_STATUS/>
+      <PAY_VALUE>500</PAY_VALUE>
+      <FEE_VALUE>0</FEE_VALUE>
+      <TAX_VALUE>0</TAX_VALUE>
+      <CONSIG_NAME>收货人名称</CONSIG_NAME>
+      <CONSIG_ADDR>收货人地址</CONSIG_ADDR>
+      <CONSIG_COUN>502</CONSIG_COUN>
+      <GEN_STATUS>0</GEN_STATUS>
+    </ORDER_FORM_HEAD>
+    <ORDER_FORM_LISTS>
+      <ORDER_FORM_LIST>
+        <ORG_ORDER_NO>201402230001</ORG_ORDER_NO>
+        <GOODS_CO>wait</GOODS_CO>
+        <COP_GOODS_CO>LN186597705CN</COP_GOODS_CO>
+        <G_NAME>面纱</G_NAME>
+        <G_MODEL>面纱规格型号</G_MODEL>
+        <CODE_TS>6110120011</CODE_TS>
+        <BAR_CODE>2394385049333</BAR_CODE>
+        <TRADE_CURR>502</TRADE_CURR>
+        <G_UNIT>8</G_UNIT>
+        <G_QTY>50</G_QTY>
+        <DECL_PRICE>10</DECL_PRICE>
+        <DECL_TOTAL>500</DECL_TOTAL>
+      </ORDER_FORM_LIST>
+    </ORDER_FORM_LISTS>
+  </Declaration>
+</XmlMessage>

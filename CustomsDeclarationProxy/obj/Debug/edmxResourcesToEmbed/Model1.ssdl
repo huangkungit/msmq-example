@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="cdiModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="cdiModelStoreContainer">
+    <EntitySet Name="decl_message" EntityType="cdiModel.Store.decl_message" store:Type="Tables" Schema="cdi" />
+    <EntitySet Name="resp_message" EntityType="cdiModel.Store.resp_message" store:Type="Tables" Schema="cdi" />
+  </EntityContainer>
+  <EntityType Name="decl_message">
+    <Key>
+      <PropertyRef Name="decl_message_id" />
+    </Key>
+    <Property Name="decl_message_id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="send_message_id" Type="varchar" MaxLength="50" />
+    <Property Name="out_decl_no" Type="varchar" MaxLength="20" />
+    <Property Name="message_type" Type="int" />
+    <Property Name="message_detail" Type="text" />
+  </EntityType>
+  <EntityType Name="resp_message">
+    <Key>
+      <PropertyRef Name="response_message_id" />
+    </Key>
+    <Property Name="response_message_id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="send_message_id" Type="varchar" MaxLength="50" />
+    <Property Name="receive_message_id" Type="varchar" MaxLength="20" />
+    <Property Name="message_type" Type="int" />
+    <Property Name="message_detail" Type="text" />
+    <Property Name="out_decl_no" Type="varchar" MaxLength="20" />
+  </EntityType>
+</Schema>

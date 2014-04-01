@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="cdiModel.Store" Alias="Self" Provider="Devart.Data.MySql" ProviderManifestToken="MySQL, 5.1.40" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="cdiModelStoreContainer">
+    <EntitySet Name="litb_commodity_receipt_message" EntityType="cdiModel.Store.litb_commodity_receipt_message" store:Type="Tables" Schema="cdi" />
+    <EntitySet Name="litb_commodity_record_message" EntityType="cdiModel.Store.litb_commodity_record_message" store:Type="Tables" Schema="cdi" />
+    <EntitySet Name="litb_manifest_message" EntityType="cdiModel.Store.litb_manifest_message" store:Type="Tables" Schema="cdi" />
+    <EntitySet Name="litb_manifest_message_detail" EntityType="cdiModel.Store.litb_manifest_message_detail" store:Type="Tables" Schema="cdi" />
+    <EntitySet Name="litb_manifest_receipt_message" EntityType="cdiModel.Store.litb_manifest_receipt_message" store:Type="Tables" Schema="cdi" />
+    <EntitySet Name="litb_order_message" EntityType="cdiModel.Store.litb_order_message" store:Type="Tables" Schema="cdi" />
+    <EntitySet Name="litb_order_message_detail" EntityType="cdiModel.Store.litb_order_message_detail" store:Type="Tables" Schema="cdi" />
+  </EntityContainer>
+  <EntityType Name="litb_commodity_receipt_message">
+    <Key>
+      <PropertyRef Name="receipt_message_id" />
+    </Key>
+    <Property Name="receipt_message_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="out_id" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="trade_code" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="goods_co" Type="varchar" Nullable="false" MaxLength="19" />
+    <Property Name="unit_1" Type="varchar" Nullable="false" MaxLength="3" />
+    <Property Name="unit_2" Type="varchar" MaxLength="3" />
+    <Property Name="appr_status" Type="char" Nullable="false" />
+    <Property Name="appr_note" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="litb_commodity_record_message">
+    <Key>
+      <PropertyRef Name="record_message_id" />
+    </Key>
+    <Property Name="record_message_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="out_id" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="trade_code" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="biz_type" Type="char" Nullable="false" />
+    <Property Name="g_name" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="code_ts" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="g_unit" Type="varchar" Nullable="false" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="litb_manifest_message">
+    <Key>
+      <PropertyRef Name="manifest_message_id" />
+    </Key>
+    <Property Name="manifest_message_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="out_decl_no" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="biz_type" Type="char" Nullable="false" />
+    <Property Name="i_e_port" Type="varchar" MaxLength="4" />
+    <Property Name="owner_code" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="owner_name" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="carri_code" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="carri_name" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="trade_code" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="trade_name" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="agent_code" Type="varchar" MaxLength="10" />
+    <Property Name="agent_name" Type="varchar" MaxLength="255" />
+    <Property Name="traf_mode" Type="char" Nullable="false" />
+    <Property Name="wrap_type" Type="char" Nullable="false" />
+    <Property Name="trade_country" Type="varchar" Nullable="false" MaxLength="3" />
+    <Property Name="destination_port" Type="varchar" MaxLength="5" />
+    <Property Name="gross_wt" Type="decimal" Nullable="false" Precision="19" Scale="5" />
+    <Property Name="net_wt" Type="decimal" Nullable="false" Precision="19" Scale="5" />
+    <Property Name="pack_no" Type="decimal" Nullable="false" Precision="19" Scale="5" />
+    <Property Name="fee_curr" Type="varchar" MaxLength="3" />
+    <Property Name="fee_value" Type="decimal" Precision="19" Scale="5" />
+    <Property Name="insur_curr" Type="varchar" MaxLength="3" />
+    <Property Name="insur_value" Type="decimal" Precision="19" Scale="5" />
+    <Property Name="waybill_no" Type="varchar" Nullable="false" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="litb_manifest_message_detail">
+    <Key>
+      <PropertyRef Name="g_no" />
+    </Key>
+    <Property Name="g_no" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="out_decl_no" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="order_no" Type="varchar" Nullable="false" MaxLength="33" />
+    <Property Name="goods_co" Type="varchar" Nullable="false" MaxLength="19" />
+    <Property Name="cop_goods_co" Type="varchar" Nullable="false" MaxLength="15" />
+    <Property Name="g_name" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="g_model" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="code_ts" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="g_unit" Type="varchar" Nullable="false" MaxLength="3" />
+    <Property Name="g_qty" Type="decimal" Nullable="false" Precision="19" Scale="5" />
+    <Property Name="unit_1" Type="varchar" MaxLength="3" />
+    <Property Name="qty_1" Type="decimal" Precision="19" Scale="5" />
+    <Property Name="unit_2" Type="varchar" MaxLength="3" />
+    <Property Name="qty_2" Type="decimal" Precision="19" Scale="5" />
+    <Property Name="origin_country" Type="varchar" Nullable="false" MaxLength="3" />
+    <Property Name="decl_price" Type="decimal" Nullable="false" Precision="19" Scale="5" />
+    <Property Name="decl_total" Type="decimal" Nullable="false" Precision="19" Scale="5" />
+    <Property Name="trade_curr" Type="varchar" Nullable="false" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="litb_manifest_receipt_message">
+    <Key>
+      <PropertyRef Name="receipt_message_id" />
+    </Key>
+    <Property Name="receipt_message_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="out_decl_no" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="agent_code" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="decl_no" Type="varchar" Nullable="false" MaxLength="18" />
+    <Property Name="appr_status" Type="char" Nullable="false" />
+    <Property Name="appr_note" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="litb_order_message">
+    <Key>
+      <PropertyRef Name="order_message_id" />
+    </Key>
+    <Property Name="order_message_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="org_order_no" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="trade_code" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="trade_name" Type="varchar" MaxLength="100" />
+    <Property Name="sply_code" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="sply_name" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="order_status" Type="char" Nullable="false" />
+    <Property Name="carri_code" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="carri_name" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="carri_no" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="carri_status" Type="char" />
+    <Property Name="pay_value" Type="decimal" Precision="19" Scale="5" />
+    <Property Name="fee_value" Type="decimal" Nullable="false" Precision="19" Scale="5" />
+    <Property Name="tax_value" Type="decimal" Nullable="false" Precision="19" Scale="5" />
+    <Property Name="consig_name" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="consig_addr" Type="varchar" MaxLength="100" />
+    <Property Name="consig_coun" Type="varchar" Nullable="false" MaxLength="3" />
+    <Property Name="gen_status" Type="char" />
+  </EntityType>
+  <EntityType Name="litb_order_message_detail">
+    <Key>
+      <PropertyRef Name="order_message_detail_id" />
+    </Key>
+    <Property Name="order_message_detail_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="org_order_no" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="goods_co" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="cop_goods_co" Type="varchar" Nullable="false" MaxLength="15" />
+    <Property Name="g_name" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="g_model" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="code_ts" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="bar_code" Type="varchar" Nullable="false" MaxLength="13" />
+    <Property Name="trade_curr" Type="varchar" Nullable="false" MaxLength="3" />
+    <Property Name="g_unit" Type="varchar" Nullable="false" MaxLength="3" />
+    <Property Name="g_qty" Type="decimal" Precision="19" Scale="5" />
+    <Property Name="decl_price" Type="decimal" Precision="19" Scale="5" />
+  </EntityType>
+</Schema>

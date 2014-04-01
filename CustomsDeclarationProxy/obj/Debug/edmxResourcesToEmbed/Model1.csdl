@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="cdiModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="cdiEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="decl_message" EntityType="cdiModel.decl_message" />
+    <EntitySet Name="resp_message" EntityType="cdiModel.resp_message" />
+  </EntityContainer>
+  <EntityType Name="decl_message">
+    <Key>
+      <PropertyRef Name="decl_message_id" />
+    </Key>
+    <Property Name="decl_message_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="send_message_id" Type="String" />
+    <Property Name="out_decl_no" Type="String" />
+    <Property Name="message_type" Type="Int32" />
+    <Property Name="message_detail" Type="String" />
+  </EntityType>
+  <EntityType Name="resp_message">
+    <Key>
+      <PropertyRef Name="response_message_id" />
+    </Key>
+    <Property Name="response_message_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="send_message_id" Type="String" />
+    <Property Name="receive_message_id" Type="String" />
+    <Property Name="message_type" Type="Int32" />
+    <Property Name="message_detail" Type="String" />
+    <Property Name="out_decl_no" Type="String" />
+  </EntityType>
+</Schema>

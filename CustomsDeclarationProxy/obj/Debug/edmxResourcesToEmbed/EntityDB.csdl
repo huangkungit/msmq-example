@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="cdiModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="cdiEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="litb_commodity_receipt_message" EntityType="cdiModel.litb_commodity_receipt_message" />
+    <EntitySet Name="litb_commodity_record_message" EntityType="cdiModel.litb_commodity_record_message" />
+    <EntitySet Name="litb_manifest_message" EntityType="cdiModel.litb_manifest_message" />
+    <EntitySet Name="litb_manifest_message_detail" EntityType="cdiModel.litb_manifest_message_detail" />
+    <EntitySet Name="litb_manifest_receipt_message" EntityType="cdiModel.litb_manifest_receipt_message" />
+    <EntitySet Name="litb_order_message" EntityType="cdiModel.litb_order_message" />
+    <EntitySet Name="litb_order_message_detail" EntityType="cdiModel.litb_order_message_detail" />
+  </EntityContainer>
+  <EntityType Name="litb_commodity_receipt_message">
+    <Key>
+      <PropertyRef Name="receipt_message_id" />
+    </Key>
+    <Property Name="receipt_message_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="out_id" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="trade_code" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="goods_co" Type="String" Nullable="false" MaxLength="19" Unicode="true" FixedLength="false" />
+    <Property Name="unit_1" Type="String" Nullable="false" MaxLength="3" Unicode="true" FixedLength="false" />
+    <Property Name="unit_2" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+    <Property Name="appr_status" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="appr_note" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="litb_commodity_record_message">
+    <Key>
+      <PropertyRef Name="record_message_id" />
+    </Key>
+    <Property Name="record_message_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="out_id" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="trade_code" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="biz_type" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="g_name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="code_ts" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="g_unit" Type="String" Nullable="false" MaxLength="3" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="litb_manifest_message">
+    <Key>
+      <PropertyRef Name="manifest_message_id" />
+    </Key>
+    <Property Name="manifest_message_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="out_decl_no" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="biz_type" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="i_e_port" Type="String" MaxLength="4" Unicode="true" FixedLength="false" />
+    <Property Name="owner_code" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="owner_name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="carri_code" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="carri_name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="trade_code" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="trade_name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="agent_code" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="agent_name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="traf_mode" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="wrap_type" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="trade_country" Type="String" Nullable="false" MaxLength="3" Unicode="true" FixedLength="false" />
+    <Property Name="destination_port" Type="String" MaxLength="5" Unicode="true" FixedLength="false" />
+    <Property Name="gross_wt" Type="Decimal" Nullable="false" Precision="19" Scale="5" />
+    <Property Name="net_wt" Type="Decimal" Nullable="false" Precision="19" Scale="5" />
+    <Property Name="pack_no" Type="Decimal" Nullable="false" Precision="19" Scale="5" />
+    <Property Name="fee_curr" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+    <Property Name="fee_value" Type="Decimal" Precision="19" Scale="5" />
+    <Property Name="insur_curr" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+    <Property Name="insur_value" Type="Decimal" Precision="19" Scale="5" />
+    <Property Name="waybill_no" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="litb_manifest_message_detail">
+    <Key>
+      <PropertyRef Name="g_no" />
+    </Key>
+    <Property Name="g_no" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="out_decl_no" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="order_no" Type="String" Nullable="false" MaxLength="33" Unicode="true" FixedLength="false" />
+    <Property Name="goods_co" Type="String" Nullable="false" MaxLength="19" Unicode="true" FixedLength="false" />
+    <Property Name="cop_goods_co" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
+    <Property Name="g_name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="g_model" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="code_ts" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="g_unit" Type="String" Nullable="false" MaxLength="3" Unicode="true" FixedLength="false" />
+    <Property Name="g_qty" Type="Decimal" Nullable="false" Precision="19" Scale="5" />
+    <Property Name="unit_1" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+    <Property Name="qty_1" Type="Decimal" Precision="19" Scale="5" />
+    <Property Name="unit_2" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+    <Property Name="qty_2" Type="Decimal" Precision="19" Scale="5" />
+    <Property Name="origin_country" Type="String" Nullable="false" MaxLength="3" Unicode="true" FixedLength="false" />
+    <Property Name="decl_price" Type="Decimal" Nullable="false" Precision="19" Scale="5" />
+    <Property Name="decl_total" Type="Decimal" Nullable="false" Precision="19" Scale="5" />
+    <Property Name="trade_curr" Type="String" Nullable="false" MaxLength="3" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="litb_manifest_receipt_message">
+    <Key>
+      <PropertyRef Name="receipt_message_id" />
+    </Key>
+    <Property Name="receipt_message_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="out_decl_no" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="agent_code" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="decl_no" Type="String" Nullable="false" MaxLength="18" Unicode="true" FixedLength="false" />
+    <Property Name="appr_status" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="appr_note" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="litb_order_message">
+    <Key>
+      <PropertyRef Name="order_message_id" />
+    </Key>
+    <Property Name="order_message_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="org_order_no" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="trade_code" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="trade_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="sply_code" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="sply_name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="order_status" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="carri_code" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="carri_name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="carri_no" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="carri_status" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="pay_value" Type="Decimal" Precision="19" Scale="5" />
+    <Property Name="fee_value" Type="Decimal" Nullable="false" Precision="19" Scale="5" />
+    <Property Name="tax_value" Type="Decimal" Nullable="false" Precision="19" Scale="5" />
+    <Property Name="consig_name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="consig_addr" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="consig_coun" Type="String" Nullable="false" MaxLength="3" Unicode="true" FixedLength="false" />
+    <Property Name="gen_status" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+  </EntityType>
+  <EntityType Name="litb_order_message_detail">
+    <Key>
+      <PropertyRef Name="order_message_detail_id" />
+    </Key>
+    <Property Name="order_message_detail_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="org_order_no" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="goods_co" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="cop_goods_co" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
+    <Property Name="g_name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="g_model" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="code_ts" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="bar_code" Type="String" Nullable="false" MaxLength="13" Unicode="true" FixedLength="false" />
+    <Property Name="trade_curr" Type="String" Nullable="false" MaxLength="3" Unicode="true" FixedLength="false" />
+    <Property Name="g_unit" Type="String" Nullable="false" MaxLength="3" Unicode="true" FixedLength="false" />
+    <Property Name="g_qty" Type="Decimal" Precision="19" Scale="5" />
+    <Property Name="decl_price" Type="Decimal" Precision="19" Scale="5" />
+  </EntityType>
+</Schema>

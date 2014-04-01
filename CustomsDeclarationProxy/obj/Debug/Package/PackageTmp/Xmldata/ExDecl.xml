@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<XmlMessage>
+  <Declaration>
+    <EX_DECL_HEAD>
+      <OUT_DECL_NO>QD3333</OUT_DECL_NO>
+      <BIZ_TYPE>1</BIZ_TYPE>
+      <I_E_PORT/>
+      <OWNER_CODE>3205242177</OWNER_CODE>
+      <OWNER_NAME>兰亭集势（苏州）贸易有限公司</OWNER_NAME>
+      <CARRI_CODE>3205980022</CARRI_CODE>
+      <CARRI_NAME>苏州邮政局</CARRI_NAME>
+      <TRADE_CODE>3205242177</TRADE_CODE>
+      <TRADE_NAME>兰亭集势（苏州）贸易有限公司</TRADE_NAME>
+      <AGENT_CODE>3205242177</AGENT_CODE>
+      <AGENT_NAME>兰亭集势（苏州）贸易有限公司</AGENT_NAME>
+      <TRAF_MODE>5</TRAF_MODE>
+      <WRAP_TYPE>2</WRAP_TYPE>
+      <TRADE_COUNTRY>502</TRADE_COUNTRY>
+      <GROSS_WT>1</GROSS_WT>
+      <NET_WT>1</NET_WT>
+      <PACK_NO>1</PACK_NO>
+      <FEE_CURR>502</FEE_CURR>
+      <FEE_VALUE>100</FEE_VALUE>
+      <INSUR_CURR>502</INSUR_CURR>
+      <INSUR_VALUE/>
+      <WAYBILL_NO>YD2013112700000001</WAYBILL_NO>
+    </EX_DECL_HEAD>
+    <EX_DECL_LISTS>
+      <EX_DECL_LIST>
+        <OUT_DECL_NO>LT10001</OUT_DECL_NO>
+        <G_NO>1</G_NO>
+        <ORDER_NO>201402230001</ORDER_NO>
+        <GOODS_CO>Wait</GOODS_CO>
+        <COP_GOODS_CO>LN186597705CN</COP_GOODS_CO>
+        <G_NAME>面纱</G_NAME>
+        <G_MODEL>面纱规格型号</G_MODEL>
+        <CODE_TS>6110120011</CODE_TS>
+        <G_UNIT>8</G_UNIT>
+        <G_QTY>50</G_QTY>
+        <UNIT_1>8</UNIT_1>
+        <QTY_1>10</QTY_1>
+        <UNIT_2/>
+        <QTY_2/>
+        <ORIGIN_COUNTRY>502</ORIGIN_COUNTRY>
+        <DECL_PRICE>1</DECL_PRICE>
+        <DECL_TOTAL>500</DECL_TOTAL>
+        <TRADE_CURR>502</TRADE_CURR>
+      </EX_DECL_LIST>
+    </EX_DECL_LISTS>
+  </Declaration>
+</XmlMessage>

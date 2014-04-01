@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="cdiModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="cdiModelStoreContainer">
+          <EntitySet Name="decl_message" EntityType="cdiModel.Store.decl_message" store:Type="Tables" Schema="cdi" />
+          <EntitySet Name="resp_message" EntityType="cdiModel.Store.resp_message" store:Type="Tables" Schema="cdi" />
+        </EntityContainer>
+        <EntityType Name="decl_message">
+          <Key>
+            <PropertyRef Name="decl_message_id" />
+          </Key>
+          <Property Name="decl_message_id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="send_message_id" Type="varchar" MaxLength="50" />
+          <Property Name="out_decl_no" Type="varchar" MaxLength="20" />
+          <Property Name="message_type" Type="int" />
+          <Property Name="message_detail" Type="text" />
+        </EntityType>
+        <EntityType Name="resp_message">
+          <Key>
+            <PropertyRef Name="response_message_id" />
+          </Key>
+          <Property Name="response_message_id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="send_message_id" Type="varchar" MaxLength="50" />
+          <Property Name="receive_message_id" Type="varchar" MaxLength="20" />
+          <Property Name="message_type" Type="int" />
+          <Property Name="message_detail" Type="text" />
+          <Property Name="out_decl_no" Type="varchar" MaxLength="20" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="cdiModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="cdiEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="decl_message" EntityType="cdiModel.decl_message" />
+          <EntitySet Name="resp_message" EntityType="cdiModel.resp_message" />
+        </EntityContainer>
+        <EntityType Name="decl_message">
+          <Key>
+            <PropertyRef Name="decl_message_id" />
+          </Key>
+          <Property Name="decl_message_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="send_message_id" Type="String" />
+          <Property Name="out_decl_no" Type="String" />
+          <Property Name="message_type" Type="Int32" />
+          <Property Name="message_detail" Type="String" />
+        </EntityType>
+        <EntityType Name="resp_message">
+          <Key>
+            <PropertyRef Name="response_message_id" />
+          </Key>
+          <Property Name="response_message_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="send_message_id" Type="String" />
+          <Property Name="receive_message_id" Type="String" />
+          <Property Name="message_type" Type="Int32" />
+          <Property Name="message_detail" Type="String" />
+          <Property Name="out_decl_no" Type="String" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="cdiModelStoreContainer" CdmEntityContainer="cdiEntities">
+          <EntitySetMapping Name="decl_message"><EntityTypeMapping TypeName="cdiModel.decl_message"><MappingFragment StoreEntitySet="decl_message">
+            <ScalarProperty Name="decl_message_id" ColumnName="decl_message_id" />
+            <ScalarProperty Name="send_message_id" ColumnName="send_message_id" />
+            <ScalarProperty Name="out_decl_no" ColumnName="out_decl_no" />
+            <ScalarProperty Name="message_type" ColumnName="message_type" />
+            <ScalarProperty Name="message_detail" ColumnName="message_detail" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="resp_message"><EntityTypeMapping TypeName="cdiModel.resp_message"><MappingFragment StoreEntitySet="resp_message">
+            <ScalarProperty Name="response_message_id" ColumnName="response_message_id" />
+            <ScalarProperty Name="send_message_id" ColumnName="send_message_id" />
+            <ScalarProperty Name="receive_message_id" ColumnName="receive_message_id" />
+            <ScalarProperty Name="message_type" ColumnName="message_type" />
+            <ScalarProperty Name="message_detail" ColumnName="message_detail" />
+            <ScalarProperty Name="out_decl_no" ColumnName="out_decl_no" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="cdiModel.decl_message" Width="1.5" PointX="0.75" PointY="0.75" Height="1.9700325520833331" IsExpanded="true" />
+        <EntityTypeShape EntityType="cdiModel.resp_message" Width="1.5" PointX="2.75" PointY="0.75" Height="2.1610522460937496" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

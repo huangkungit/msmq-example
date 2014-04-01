@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <setParameter name="IIS Web Application Name" value="Default Web Site/CustomsDeclarationProxy_deploy" />
+  <setParameter name="cdiEntities-Web.config Connection String" value="metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=MySql.Data.MySqlClient;provider connection string=&quot;server=192.168.66.32;User Id=db_admin;password=light2902;Persist Security Info=True;database=cdi&quot;" />
+</parameters>

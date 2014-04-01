@@ -1,0 +1,12 @@
+﻿<parameters>
+  <parameter name="IIS Web Application Name" defaultValue="Default Web Site/CustomsDeclarationProxy_deploy" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\dotNetStudy\\CustomsDeclarationProxy\\CustomsDeclarationProxy\\obj\\Debug\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^D:\\dotNetStudy\\CustomsDeclarationProxy\\CustomsDeclarationProxy\\obj\\Debug\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="ApplicationServices-Web.config Connection String" description="ApplicationServices 应用程序在 web.config 中用来访问数据库的连接字符串。" defaultValue="data source=.\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\aspnetdb.mdf;User Instance=true" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ApplicationServices']/@connectionString" />
+  </parameter>
+  <parameter name="cdiEntities-Web.config Connection String" description="cdiEntities 应用程序在 web.config 中用来访问数据库的连接字符串。" defaultValue="metadata=res://*/EntityDB.csdl|res://*/EntityDB.ssdl|res://*/EntityDB.msl;provider=Devart.Data.MySql;provider connection string=&quot;User Id=root;Password=root;Character Set=utf8;Host=127.0.0.1;Port=3307;Database=cdi;Persist Security Info=True&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='cdiEntities']/@connectionString" />
+  </parameter>
+</parameters>
