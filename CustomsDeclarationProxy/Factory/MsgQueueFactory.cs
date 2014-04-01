@@ -13,17 +13,17 @@ namespace CustomsDeclarationProxy.Factory
         {
             if (type == (int)MessageType.GOODS)
             {
-                return new MsgQueue().Createqueue("FormatName:Direct=TCP:192.168.67.2\\private$\\LITB_GOODS_APL");
+                return new MsgQueue().Createqueue("FormatName:Direct=TCP:121.52.213.102\\private$\\LITB_GOODS_APL");
 
             }
             else if(type == (int)MessageType.MANIFEST)
             {
-                return new MsgQueue().Createqueue("FormatName:Direct=TCP:192.168.67.2\\private$\\LITB_DECL_APL");
+                return new MsgQueue().Createqueue("FormatName:Direct=TCP:121.52.213.102\\private$\\LITB_DECL_APL");
 
             }
             else if (type == (int)MessageType.ORDER)
             {
-                return new MsgQueue().Createqueue("FormatName:Direct=TCP:192.168.67.2\\private$\\LITB_DECL_APL");
+                return new MsgQueue().Createqueue("FormatName:Direct=TCP:121.52.213.102\\private$\\LITB_DECL_APL");
 
             }
             else

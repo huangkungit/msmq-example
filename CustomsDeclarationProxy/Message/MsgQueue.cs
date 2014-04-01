@@ -67,7 +67,6 @@ namespace CustomsDeclarationProxy.Message
                // mq.Send(myMessage, MessageQueueTransactionType.Automatic);
                 mq.Send(myMessage, msgTransaction);       
                 Logger.Info(messageId + "send message success！");
-                Logger.Info("server");
 
             }
             catch (Exception e)
