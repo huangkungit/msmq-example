@@ -66,7 +66,7 @@ namespace CustomsDeclarationProxy.Message
                 //发送消息到队列中
                // mq.Send(myMessage, MessageQueueTransactionType.Automatic);
                 mq.Send(myMessage, msgTransaction);       
-                Logger.Info("send message success！");
+                Logger.Info(messageId + "send message success！");
 
             }
             catch (Exception e)

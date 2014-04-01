@@ -27,3 +27,9 @@ D:\dotNetStudy\CustomsDeclarationProxy_later1\CustomsDeclarationProxy\bin\Hessia
 D:\dotNetStudy\CustomsDeclarationProxy_later1\CustomsDeclarationProxy\obj\Debug\ResolveAssemblyReference.cache
 D:\dotNetStudy\CustomsDeclarationProxy_later1\CustomsDeclarationProxy\obj\Debug\CustomsDeclarationProxy.dll
 D:\dotNetStudy\CustomsDeclarationProxy_later1\CustomsDeclarationProxy\obj\Debug\CustomsDeclarationProxy.pdb
+D:\github\CustomsProxy\CustomsDeclarationProxy\bin\CustomsDeclarationProxy.dll
+D:\github\CustomsProxy\CustomsDeclarationProxy\bin\CustomsDeclarationProxy.pdb
+D:\github\CustomsProxy\CustomsDeclarationProxy\bin\Hessiancsharp.dll
+D:\github\CustomsProxy\CustomsDeclarationProxy\obj\Debug\ResolveAssemblyReference.cache
+D:\github\CustomsProxy\CustomsDeclarationProxy\obj\Debug\CustomsDeclarationProxy.dll
+D:\github\CustomsProxy\CustomsDeclarationProxy\obj\Debug\CustomsDeclarationProxy.pdb
