@@ -87,7 +87,7 @@ namespace CustomsDeclarationProxy.Message
           
             try
             {
-                msg = mq.Receive(TimeSpan.FromMilliseconds(1000),MessageQueueTransactionType.Automatic);
+                msg = mq.Receive(TimeSpan.FromMilliseconds(1000),MessageQueueTransactionType.Single);
                 Logger.Info("receive message successful!");
                 return msg; 
             }

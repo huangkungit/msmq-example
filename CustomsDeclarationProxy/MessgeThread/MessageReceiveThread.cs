@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Threading;
 using System.Transactions;
+using System.Messaging;
 using System.Xml;
 using CustomsDeclarationProxy.Message;
 using CustomsDeclarationProxy.Log;
@@ -68,13 +69,15 @@ namespace CustomsDeclarationProxy.MessageThread
         {
             while (flag)
             {
+                MessageQueueTransaction msgTransaction = new MessageQueueTransaction();
                 try
-                {
+                {     
                     using (TransactionScope commodityTransaction = new TransactionScope())
                     {
                         System.Messaging.Message msg = DeclRespQueue.ReceiveMessage();
                         if (msg == null)
                         {
+                            msgTransaction.Commit();
                             commodityTransaction.Complete();
                             continue;
                         }
@@ -90,7 +93,7 @@ namespace CustomsDeclarationProxy.MessageThread
                             string outId = RespUtil.getOutIdFromManifestResp(doc);
                             string recMsgId = RespUtil.getRecMsgIdFromManifestResp(doc);
 
-                            msgRespService.updateRespMsgDetail(outId, xmlmsg, recMsgId, (int)MessageType.MANIFEST);
+                            msgRespService.updateRespMsgDetail(outId, xmlmsg, recMsgId, (int)CustomsDeclarationProxy.Constant.MessageType.MANIFEST);
 
                             commodityTransaction.Complete();
                             Logger.Debug(xmlmsg);
@@ -100,6 +103,7 @@ namespace CustomsDeclarationProxy.MessageThread
                 }
                 catch (Exception e)
                 {
+                    msgTransaction.Abort();
                     Logger.Error("decl response message receive / update failed", e);
                 }
 
@@ -138,9 +142,6 @@ namespace CustomsDeclarationProxy.MessageThread
                             msgRespService.updateRespMsgDetail(outId, doc.InnerXml, recMsgId,(int)MessageType.GOODS);
 
                             goodsTransaction.Complete();
-                            Logger.Info("outId:"+outId);
-                            Logger.Info("recMsgId:"+ recMsgId);
-                            Logger.Info(xmlmsg);
                         }
                     }
                 }
@@ -185,9 +186,6 @@ namespace CustomsDeclarationProxy.MessageThread
                             msgRespService.updateRespMsgDetail(outId, doc.InnerXml, recMsgId, (int)MessageType.ORDER);
 
                             orderTransaction.Complete();
-                            Logger.Debug("outId:" + outId);
-                            Logger.Debug("recMsgId:" + recMsgId);
-                            Logger.Debug(xmlmsg);
                         }
                     }
                 }
