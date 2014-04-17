@@ -23,7 +23,7 @@ namespace CustomsDeclarationProxy.Factory
             }
             else if (type == (int)MessageType.ORDER)
             {
-                return new MsgQueue().Createqueue("FormatName:Direct=TCP:121.52.213.102\\private$\\LITB_DECL_APL");
+                return new MsgQueue().Createqueue("FormatName:Direct=TCP:121.52.213.102\\private$\\LITB_ORDER_APL");
 
             }
             else

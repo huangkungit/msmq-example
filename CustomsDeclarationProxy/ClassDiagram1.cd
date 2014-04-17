@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CustomsDeclarationProxy.About" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>About.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CustomsDeclarationProxy._Default" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Default.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CustomsDeclarationProxy.Global" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAAAAAECIBAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CustomsDeclarationProxy.cdiEntities" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAoAAAAAAAAAAABAAAAAAAAAAADAAAAEAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CustomsDeclarationProxy.decl_message" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgQAEAAYAAABAAIEAAAIEACAEEEAgAABAAAQAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CustomsDeclarationProxy.resp_message" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgQAAAAYAAABBQIEAAEIEACEEEEIgAABAAAQAAACI=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CustomsDeclarationProxy.SiteMaster" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACABAACAAAAAAQAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Site.Master.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CustomsDeclarationProxy.Account.ChangePassword" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAIAAAA=</HashCode>
+      <FileName>Account\ChangePassword.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CustomsDeclarationProxy.Account.ChangePasswordSuccess" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Account\ChangePasswordSuccess.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CustomsDeclarationProxy.Account.Login" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAIAAAE=</HashCode>
+      <FileName>Account\Login.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CustomsDeclarationProxy.Account.Register" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAIAAAAAAAAAAAAAAAAAABAAAAAAAAIAAAA=</HashCode>
+      <FileName>Account\Register.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CustomsDeclarationProxy.Dao.MessageDeclDao" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Dao\MessageDeclDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CustomsDeclarationProxy.Dao.MessageRespDao" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAQAAAAAAAAABAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Dao\MessageRespDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CustomsDeclarationProxy.Factory.MsgQueueFactory" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Factory\MsgQueueFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CustomsDeclarationProxy.Hessian.DeclareProxyAPI" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAIAkAAAAAAIAAAAAAAAAIA=</HashCode>
+      <FileName>Hessian\DeclareProxyAPI.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CustomsDeclarationProxy.Log.Logger" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAYAAAAAACAAAAAAAAAEAAAAAAEAFAAA=</HashCode>
+      <FileName>Log\Logger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CustomsDeclarationProxy.Message.MsgQueue" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAgAAAAACAAAAAAECAAQABAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\MsgQueue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CustomsDeclarationProxy.MessageThread.MessageReceiveThread" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACEAAAAQCAAAAAAIAQAAAAAAACEAAEAACCAAAAAAA=</HashCode>
+      <FileName>MessgeThread\MessageReceiveThread.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CustomsDeclarationProxy.Service.MessageDeclService" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQABAAQgAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Service\MessageDeclService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CustomsDeclarationProxy.Service.MessageRespService" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAgAAAAAQABBAAAAgAAAAAAAAAAQAEAAA=</HashCode>
+      <FileName>Service\MessageRespService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CustomsDeclarationProxy.Util.RespUtil" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEIAAAAACAAAhAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Util\RespUtil.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="CustomsDeclarationProxy.Hessian.IDeclareProxyAPI" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Hessian\IDeclareProxyAPI.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="CustomsDeclarationProxy.Constant.MessageType" Collapsed="true">
+    <Position X="0.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Constant\MessageType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="微软雅黑" Size="9" />
+</ClassDiagram>
