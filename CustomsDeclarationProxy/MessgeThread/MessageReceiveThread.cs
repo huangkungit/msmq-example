@@ -11,7 +11,8 @@ using CustomsDeclarationProxy.Log;
 using CustomsDeclarationProxy.Util;
 using CustomsDeclarationProxy.Service;
 using CustomsDeclarationProxy.Constant;
-
+using CustomsDeclarationProxy.MessgeThread;
+using CustomsDeclarationProxy.Config;
 namespace CustomsDeclarationProxy.MessageThread
 {
     public static class MessageReceiveThread
@@ -21,7 +22,7 @@ namespace CustomsDeclarationProxy.MessageThread
         static private MsgQueue GoodsRespQueue = new MsgQueue().Createqueue(".\\private$\\LITB_GOODS_RESP_APL");
         static private MsgQueue DeclRespQueue = new MsgQueue().Createqueue(".\\private$\\LITB_DECL_RESP_APL");
         static private MsgQueue OrderRespQueue = new MsgQueue().Createqueue(".\\private$\\LITB_ORDER_RESP_APL");
-        static private bool flag;
+        static public bool flag;
         static private MessageRespService msgRespService = MessageRespService.createInstance();
 
         static public void startThread()
@@ -30,15 +31,19 @@ namespace CustomsDeclarationProxy.MessageThread
             {
                 flag = true;
                 int counter;
-                receiveMessageThreadArray[0] = new Thread(new ThreadStart(DeclRespMsgListen));
-                receiveMessageThreadArray[1] = new Thread(new ThreadStart(GoodsRespMsgListen));
-                receiveMessageThreadArray[2] = new Thread(new ThreadStart(OrderRespMsgListen));
+                receiveMessageThreadArray[0] = new Thread(new ThreadStart(new MsgListen(GoodsRespQueue,CustomsMessageType.GOODS).ThreadProc));
+                receiveMessageThreadArray[1] = new Thread(new ThreadStart(new MsgListen(DeclRespQueue, CustomsMessageType.MANIFEST).ThreadProc));
+                receiveMessageThreadArray[2] = new Thread(new ThreadStart(new MsgListen(OrderRespQueue,CustomsMessageType.ORDER).ThreadProc));
 
                 for (counter = 0; counter < threadNumber; counter++)
                 {
                     receiveMessageThreadArray[counter].Start();
                 }
                 Logger.Info("start receive thread success!");
+
+                ConfigUtil cu = ConfigUtil.createInstance();
+                String str = cu.getDeclMsgQueueAddr("orderDeclUrl");
+
             }
             catch (Exception e)
             {
@@ -64,140 +69,6 @@ namespace CustomsDeclarationProxy.MessageThread
                 Logger.Error("stop receive thread failed!", e);
             }
         }
-
-        static private void DeclRespMsgListen()
-        {
-            while (flag)
-            {
-                MessageQueueTransaction msgTransaction = new MessageQueueTransaction();
-                try
-                {     
-                    using (TransactionScope commodityTransaction = new TransactionScope())
-                    {
-                        System.Messaging.Message msg = DeclRespQueue.ReceiveMessage();
-                        if (msg == null)
-                        {
-                            msgTransaction.Commit();
-                            commodityTransaction.Complete();
-                            continue;
-                        }
-
-                        
-                        if ((XmlDocument)msg.Body != null)
-                        {
-                            string xmlmsg = "";
-                            xmlmsg = ((XmlDocument)msg.Body).InnerXml; //get the message;
-                            XmlDocument doc = new XmlDocument();
-                            doc.LoadXml(xmlmsg);                         
-
-                            string outId = RespUtil.getOutIdFromManifestResp(doc);
-                            string recMsgId = RespUtil.getRecMsgIdFromManifestResp(doc);
-
-                            msgRespService.updateRespMsgDetail(outId, xmlmsg, recMsgId, (int)CustomsDeclarationProxy.Constant.MessageType.MANIFEST);
-
-                            commodityTransaction.Complete();
-                            Logger.Debug(xmlmsg);
-                        }
-                        
-                    }
-                }
-                catch (Exception e)
-                {
-                    msgTransaction.Abort();
-                    Logger.Error("decl response message receive / update failed", e);
-                }
-
-            }
-
-        }
-
-        static private void GoodsRespMsgListen()
-        {
-            while (flag)
-            {
-                try
-                {
-                    using (TransactionScope goodsTransaction = new TransactionScope())
-                    {
-                        System.Messaging.Message msg = GoodsRespQueue.ReceiveMessage();
-
-                        if (msg == null)
-                        {
-                            goodsTransaction.Complete();
-                            continue;
-                        }
-
-                        
-                        if ((XmlDocument)msg.Body != null)
-                        {
-                            string xmlmsg = "";
-                            xmlmsg = ((XmlDocument)msg.Body).InnerXml; //get the message;
-                            XmlDocument doc = new XmlDocument();
-                            doc.LoadXml(xmlmsg);
-                                
-
-                            string outId = RespUtil.getOutIdFromGoodsResp(doc);
-                            string recMsgId = RespUtil.getRecMsgIdFromGoodsResp(doc);
-
-                            msgRespService.updateRespMsgDetail(outId, doc.InnerXml, recMsgId,(int)MessageType.GOODS);
-
-                            goodsTransaction.Complete();
-                        }
-                    }
-                }
-                catch (Exception e)
-                {
-                    Logger.Error("goods response message receive / update failed", e);
-                }
-
-            }
-
-        }
-
-        static private void OrderRespMsgListen()
-        {
-            while (flag)
-            {
-                try
-                {
-                    using (TransactionScope orderTransaction = new TransactionScope())
-                    {
-                        System.Messaging.Message msg = OrderRespQueue.ReceiveMessage();
-
-                        if (msg == null)
-                        {
-                            orderTransaction.Complete();
-                            continue;
-                        }
-
-
-                        if ((XmlDocument)msg.Body != null)
-                        {
-                            string xmlmsg = "";
-                            xmlmsg = ((XmlDocument)msg.Body).InnerXml; //get the message;
-                            Logger.Debug(xmlmsg);
-                            XmlDocument doc = new XmlDocument();
-                            doc.LoadXml(xmlmsg);
-
-
-                            string outId = RespUtil.getOutIdFromOrderResp(doc);
-                            string recMsgId = RespUtil.getRecMsgIdFromOrderResp(doc);
-
-                            msgRespService.updateRespMsgDetail(outId, doc.InnerXml, recMsgId, (int)MessageType.ORDER);
-
-                            orderTransaction.Complete();
-                        }
-                    }
-                }
-                catch (Exception e)
-                {
-                    Logger.Error("order response message receive / update failed", e);
-                }
-
-            }
-
-        }
-   
         
     }
 }

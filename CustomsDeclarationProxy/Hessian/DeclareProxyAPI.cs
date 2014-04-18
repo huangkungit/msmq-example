@@ -53,19 +53,19 @@ namespace CustomsDeclarationProxy.Hessian
 
                     mq.SendMessage(xmldoc, msgTransaction, messageId);
 
-                    msgTransaction.Commit();
                     scope.Complete();
+                    msgTransaction.Commit();                  
                     return true;
 
                 }
             } catch (Exception e)
             {
                 msgTransaction.Abort();
-                if ((int)CustomsDeclarationProxy.Constant.MessageType.MANIFEST== sendType)
+                if ((int)CustomsDeclarationProxy.Constant.CustomsMessageType.MANIFEST== sendType)
                 {
                     Logger.Error("shipmentPackId:" + outId + "send and insert manifest message failed!", e);
                 }
-                else if ((int)CustomsDeclarationProxy.Constant.MessageType.ORDER == sendType)
+                else if ((int)CustomsDeclarationProxy.Constant.CustomsMessageType.ORDER == sendType)
                 {
                     Logger.Error("shipmentPackId:" + outId + "send and insert order message failed!", e);
                 }

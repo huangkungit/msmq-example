@@ -80,14 +80,14 @@ namespace CustomsDeclarationProxy.Message
         /// <summary>
         /// 连接消息队列并从队列中接收消息
         /// </summary>
-        public System.Messaging.Message ReceiveMessage()
+        public System.Messaging.Message ReceiveMessage(MessageQueueTransaction msgTransaction)
         {
             //连接到本地队列
             System.Messaging.Message msg = new System.Messaging.Message();
           
             try
             {
-                msg = mq.Receive(TimeSpan.FromMilliseconds(1000),MessageQueueTransactionType.Single);
+                msg = mq.Receive(TimeSpan.FromMilliseconds(1000), msgTransaction);
                 Logger.Info("receive message successful!");
                 return msg; 
             }
