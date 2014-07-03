@@ -86,7 +86,9 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
-    <Content Include="Config\config.xml" />
+    <Content Include="Config\config.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -143,6 +145,7 @@
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="Config\ConfigUtil.cs" />
+    <Compile Include="Constant\SendPlace.cs" />
     <Compile Include="Constant\CustomsMessageType.cs" />
     <Compile Include="Dao\MessageDeclDao.cs" />
     <Compile Include="Dao\MessageRespDao.cs" />
@@ -183,6 +186,7 @@
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
     <Compile Include="MessgeThread\MessageReceiveThread.cs" />
+    <Compile Include="Util\AESUtil.cs" />
     <Compile Include="Util\RespUtil.cs" />
   </ItemGroup>
   <ItemGroup>

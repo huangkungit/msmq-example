@@ -13,6 +13,7 @@
     <Property Name="out_decl_no" Type="varchar" MaxLength="20" />
     <Property Name="message_type" Type="int" />
     <Property Name="message_detail" Type="text" />
+    <Property Name="send_place" Type="uint" />
   </EntityType>
   <EntityType Name="resp_message">
     <Key>
@@ -24,5 +25,6 @@
     <Property Name="message_type" Type="int" />
     <Property Name="message_detail" Type="text" />
     <Property Name="out_decl_no" Type="varchar" MaxLength="20" />
+    <Property Name="send_place" Type="uint" />
   </EntityType>
 </Schema>

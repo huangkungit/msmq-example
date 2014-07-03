@@ -5,14 +5,16 @@ using System.Web;
 using System.Transactions;
 using System.Messaging;
 using System.Xml;
+using System.Text;
 using CustomsDeclarationProxy.Message;
 using CustomsDeclarationProxy.Constant;
 using CustomsDeclarationProxy.MessageThread;
 using CustomsDeclarationProxy.Log;
 using CustomsDeclarationProxy.Util;
 using CustomsDeclarationProxy.Service;
+using CustomsDeclarationProxy.Config;
 
-namespace CustomsDeclarationProxy.MessgeThread
+namespace CustomsDeclarationProxy.MessageThread
 {
     public class MsgListen
     {
@@ -20,12 +22,17 @@ namespace CustomsDeclarationProxy.MessgeThread
 
         CustomsMessageType cmt;
 
+        SendPlace sendPlace;
+
         MessageRespService msgRespService = MessageRespService.createInstance();
 
-        public MsgListen(MsgQueue respQueue, CustomsMessageType cmt)
+        private ConfigUtil configUtil = ConfigUtil.createInstance();
+
+        public MsgListen(MsgQueue respQueue, CustomsMessageType cmt, SendPlace sp)
         {
             this.respQueue = respQueue;
             this.cmt = cmt;
+            this.sendPlace = sp;
         }
 
         public void ThreadProc()
@@ -51,13 +58,30 @@ namespace CustomsDeclarationProxy.MessgeThread
                         {
                             string xmlmsg = "";
                             xmlmsg = ((XmlDocument)msg.Body).InnerXml; //get the message;
-                            XmlDocument doc = new XmlDocument();
-                            doc.LoadXml(xmlmsg);
-                            string outId = RespUtil.getOutIdFromResp(doc,cmt);
-                            string recMsgId = RespUtil.getRecMsgIdFromResp(doc,cmt);
-   
-                            msgRespService.updateRespMsgDetail(outId, xmlmsg, recMsgId, (int)cmt);                       
 
+                            XmlDocument doc = new XmlDocument();
+                            if (sendPlace == SendPlace.GOVERNMENT)
+                            {
+                                String key = configUtil.getGovPwd();
+                                xmlmsg = AESUtil.AesDecoding(xmlmsg, key, Encoding.UTF8);
+                            }
+                            doc.LoadXml(xmlmsg);
+
+                            string outId = "";
+                            string recMsgId = "";
+                            try
+                            {
+                                outId = RespUtil.getOutIdFromResp(doc, cmt, sendPlace);
+                                recMsgId = RespUtil.getRecMsgIdFromResp(doc, cmt, sendPlace);
+                            }
+                            catch (Exception e)
+                            {
+                                Logger.Error("Can't get the outId or recMsgId from RespMsg", e);
+                            }
+   
+                            msgRespService.updateRespMsgDetail(outId, xmlmsg, recMsgId, (int)cmt, (int)sendPlace);                       
+
+                            
                             respTransaction.Complete();
                             msgTransaction.Commit();
                             Logger.Debug(xmlmsg);

@@ -29,7 +29,7 @@ namespace CustomsDeclarationProxy.Service
 
        private MessageDeclDao mdd = new MessageDeclDao();
 
-       public void createDeclMessage(string messageId, string outId, int type, string messageDetailXml)
+       public void createDeclMessage(string messageId, string outId, int type, string messageDetailXml, int place)
        {
            decl_message dm = new decl_message();
 
@@ -37,6 +37,7 @@ namespace CustomsDeclarationProxy.Service
            dm.send_message_id = messageId;
            dm.message_detail = messageDetailXml;
            dm.message_type = type;
+           dm.send_place = place;
            mdd.InsertData(dm);
 
        }

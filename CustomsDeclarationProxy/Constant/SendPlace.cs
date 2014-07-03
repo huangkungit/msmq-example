@@ -5,10 +5,9 @@ using System.Web;
 
 namespace CustomsDeclarationProxy.Constant
 {
-    public enum MessageType
+    public enum SendPlace
     {
-        GOODS = 1,
-        ORDER = 2,
-        MANIFEST = 3
+        CUSTOMS = 1,
+        GOVERNMENT = 2,
     }
 }

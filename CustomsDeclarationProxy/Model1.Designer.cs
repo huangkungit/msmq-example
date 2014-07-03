@@ -270,6 +270,30 @@ namespace CustomsDeclarationProxy
         private global::System.String _message_detail;
         partial void Onmessage_detailChanging(global::System.String value);
         partial void Onmessage_detailChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int64> send_place
+        {
+            get
+            {
+                return _send_place;
+            }
+            set
+            {
+                Onsend_placeChanging(value);
+                ReportPropertyChanging("send_place");
+                _send_place = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("send_place");
+                Onsend_placeChanged();
+            }
+        }
+        private Nullable<global::System.Int64> _send_place;
+        partial void Onsend_placeChanging(Nullable<global::System.Int64> value);
+        partial void Onsend_placeChanged();
 
         #endregion
     
@@ -445,6 +469,30 @@ namespace CustomsDeclarationProxy
         private global::System.String _out_decl_no;
         partial void Onout_decl_noChanging(global::System.String value);
         partial void Onout_decl_noChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int64> send_place
+        {
+            get
+            {
+                return _send_place;
+            }
+            set
+            {
+                Onsend_placeChanging(value);
+                ReportPropertyChanging("send_place");
+                _send_place = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("send_place");
+                Onsend_placeChanged();
+            }
+        }
+        private Nullable<global::System.Int64> _send_place;
+        partial void Onsend_placeChanging(Nullable<global::System.Int64> value);
+        partial void Onsend_placeChanged();
 
         #endregion
     

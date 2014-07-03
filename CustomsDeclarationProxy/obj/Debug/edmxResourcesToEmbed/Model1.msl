@@ -4,6 +4,7 @@
     <EntitySetMapping Name="decl_message">
       <EntityTypeMapping TypeName="cdiModel.decl_message">
         <MappingFragment StoreEntitySet="decl_message">
+          <ScalarProperty Name="send_place" ColumnName="send_place" />
           <ScalarProperty Name="decl_message_id" ColumnName="decl_message_id" />
           <ScalarProperty Name="send_message_id" ColumnName="send_message_id" />
           <ScalarProperty Name="out_decl_no" ColumnName="out_decl_no" />
@@ -15,6 +16,7 @@
     <EntitySetMapping Name="resp_message">
       <EntityTypeMapping TypeName="cdiModel.resp_message">
         <MappingFragment StoreEntitySet="resp_message">
+          <ScalarProperty Name="send_place" ColumnName="send_place" />
           <ScalarProperty Name="response_message_id" ColumnName="response_message_id" />
           <ScalarProperty Name="send_message_id" ColumnName="send_message_id" />
           <ScalarProperty Name="receive_message_id" ColumnName="receive_message_id" />

@@ -16,13 +16,13 @@ namespace CustomsDeclarationProxy.Dao
             }
         }
 
-        public String queryMessageDetail(string id, int type)
+        public String queryMessageDetail(string id, int type, int place)
         {
 
             using (var ctx = new cdiEntities())
             {
                
-                var results = ctx.resp_message.SingleOrDefault(c => c.send_message_id == id && c.message_type == type);
+                var results = ctx.resp_message.SingleOrDefault(c => c.send_message_id == id && c.message_type == type && c.send_place == place);
 
                 ctx.SaveChanges();
                 if (results == null)
@@ -33,12 +33,12 @@ namespace CustomsDeclarationProxy.Dao
             }
         }
 
-        public string getRespMsgDetailByMsgId(string msgId, int type)
+        public string getRespMsgDetailByMsgId(string msgId, int type, int place)
         {
             using (var ctx = new cdiEntities())
             {
 
-                var results = ctx.resp_message.SingleOrDefault(c => c.send_message_id == msgId && c.message_type == type);
+                var results = ctx.resp_message.SingleOrDefault(c => c.send_message_id == msgId && c.message_type == type && c.send_place == place);
 
                 ctx.SaveChanges();
                 if (results == null)
@@ -52,11 +52,11 @@ namespace CustomsDeclarationProxy.Dao
 
         }
 
-        public void updateRespMsgDetail(string outId, string msgDetail, string recMsgId ,int type)
+        public void updateRespMsgDetail(string outId, string msgDetail, string recMsgId ,int type, int place)
         {
             using (var ctx = new cdiEntities())
             {
-                var results = ctx.resp_message.Where(c => c.out_decl_no == outId && c.message_type == type);
+                var results = ctx.resp_message.Where(c => c.out_decl_no == outId && c.message_type == type && c.send_place == place);
 
                 foreach (resp_message c in results)
                 {

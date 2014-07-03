@@ -10,29 +10,63 @@ namespace CustomsDeclarationProxy.Factory
     public class MsgQueueFactory
     {
         public ConfigUtil configUtil = ConfigUtil.createInstance();
-        public MsgQueue CreateMsgQueueFactory(int type)
+        public MsgQueue CreateMsgQueueFactory(int type, int place)
         {
-            if (type == (int)CustomsMessageType.GOODS)
+            if (place == (int)SendPlace.CUSTOMS)
             {
-                return new MsgQueue().Createqueue(configUtil.getDeclMsgQueueAddr("goodsDeclUrl"));
+                if (type == (int)CustomsMessageType.GOODS)
+                {
+                    return new MsgQueue().Createqueue(configUtil.getDeclMsgQueueAddr("customsGoodsDeclUrl"));
 
+                }
+                else if (type == (int)CustomsMessageType.MANIFEST)
+                {
+
+                    return new MsgQueue().Createqueue(configUtil.getDeclMsgQueueAddr("customsManifestDeclUrl"));
+
+                }
+                else if (type == (int)CustomsMessageType.ORDER)
+                {
+                    return new MsgQueue().Createqueue(configUtil.getDeclMsgQueueAddr("customsOrderDeclUrl"));
+
+                }
+                else
+                {
+                    throw new Exception("No Such Type customsMsgQueue!");
+                }
             }
-            else if(type == (int)CustomsMessageType.MANIFEST)
+            else if (place == (int)SendPlace.GOVERNMENT)
             {
-                String str = configUtil.getDeclMsgQueueAddr("manifestDeclUrl");
-                return new MsgQueue().Createqueue(configUtil.getDeclMsgQueueAddr("manifestDeclUrl"));
+                if (type == (int)CustomsMessageType.GOODS)
+                {
+                    return new MsgQueue().Createqueue(configUtil.getDeclMsgQueueAddr("govGoodsDeclUrl"));
 
-            }
-            else if (type == (int)CustomsMessageType.ORDER)
-            {           
-                return new MsgQueue().Createqueue(configUtil.getDeclMsgQueueAddr("orderDeclUrl"));
+                }
+                else if (type == (int)CustomsMessageType.MANIFEST)
+                {
+
+                    return new MsgQueue().Createqueue(configUtil.getDeclMsgQueueAddr("govManifestDeclUrl"));
+
+                }
+                else if (type == (int)CustomsMessageType.ORDER)
+                {
+                    return new MsgQueue().Createqueue(configUtil.getDeclMsgQueueAddr("govOrderDeclUrl"));
+
+                }
+                else
+                {
+                    throw new Exception("No Such Type govMsgQueue!");
+                }
 
             }
             else
             {
-                throw new Exception("No Such Type MsgQueue!");   
+                throw new Exception("No such sendPlace!");
             }
 
+
         }
+
+
     }
 }

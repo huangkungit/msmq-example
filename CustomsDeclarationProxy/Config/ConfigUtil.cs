@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Xml;
 using CustomsDeclarationProxy.Constant;
+using System.Configuration;
 
 namespace CustomsDeclarationProxy.Config
 {
@@ -17,7 +18,8 @@ namespace CustomsDeclarationProxy.Config
         private ConfigUtil()
         {
               doc=new XmlDocument();
-              doc.Load(System.Web.HttpContext.Current.Server.MapPath("/config/config.xml"));
+              string configurl = ConfigurationManager.AppSettings["configurl"].ToString();
+              doc.Load(System.Web.HttpContext.Current.Server.MapPath(configurl));
         }
 
         public static ConfigUtil createInstance()
@@ -37,6 +39,17 @@ namespace CustomsDeclarationProxy.Config
             return doc.SelectSingleNode("config/" + str).InnerText;
         }
 
+        public String getGovPwd()
+        {
+            return doc.SelectSingleNode("config/sendHelper/government/password").InnerText;
+        }
+
+        public String getRespMsgQueueAddr(String str)
+        {
+            return doc.SelectSingleNode("config/" + str).InnerText;
+        }
+
+        /*
         public String getNameSpaceByMsgType(CustomsMessageType cmt)
         {
             if (cmt == CustomsMessageType.GOODS)
@@ -54,40 +67,43 @@ namespace CustomsDeclarationProxy.Config
 
             return "";
         }
+        */
 
 
-        public String getOutIdPathByMsgType(CustomsMessageType cmt)
+        public String getOutIdPath(CustomsMessageType cmt, String des)
         {
+           
             if (cmt == CustomsMessageType.GOODS)
             {
-                return doc.SelectSingleNode("config/responseHelper/goods/outId").InnerText;
+                return doc.SelectSingleNode("config/responseHelper/"+ des +"/goods/outId").InnerText;
             }
             else if (cmt == CustomsMessageType.MANIFEST)
             {
-                return doc.SelectSingleNode("config/responseHelper/manifest/outId").InnerText;
+                return doc.SelectSingleNode("config/responseHelper/"+ des +"/manifest/outId").InnerText;
             }
             else if (cmt == CustomsMessageType.ORDER)
             {
-                return doc.SelectSingleNode("config/responseHelper/order/outId").InnerText;
+                return doc.SelectSingleNode("config/responseHelper/"+ des +"order/outId").InnerText;
             }
+                
 
             return "";
         }
 
 
-        public String getRecMsgIdPathByMsgType(CustomsMessageType cmt)
+        public String getRecMsgIdPathByMsgType(CustomsMessageType cmt, String des)
         {
             if (cmt == CustomsMessageType.GOODS)
             {
-                return doc.SelectSingleNode("config/responseHelper/goods/recMsgId").InnerText;
+                return doc.SelectSingleNode("config/responseHelper/" + des + "/goods/recMsgId").InnerText;
             }
             else if (cmt == CustomsMessageType.MANIFEST)
             {
-                return doc.SelectSingleNode("config/responseHelper/manifest/recMsgId").InnerText;
+                return doc.SelectSingleNode("config/responseHelper/" + des + "/manifest/recMsgId").InnerText;
             }
             else if (cmt == CustomsMessageType.ORDER)
             {
-                return doc.SelectSingleNode("config/responseHelper/order/recMsgId").InnerText;
+                return doc.SelectSingleNode("config/responseHelper/" + des + "/order/recMsgId").InnerText;
             }
 
             return "";

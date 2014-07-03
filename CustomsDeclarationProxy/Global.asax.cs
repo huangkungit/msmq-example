@@ -7,12 +7,16 @@ using System.Web.SessionState;
 using System.Threading;
 using System.Transactions;
 using System.Xml;
+using System.Configuration;
 using CustomsDeclarationProxy.Log;
 using CustomsDeclarationProxy.Message;
 using CustomsDeclarationProxy.Service;
 using CustomsDeclarationProxy.Util;
 using CustomsDeclarationProxy.Constant;
 using CustomsDeclarationProxy.MessageThread;
+using CustomsDeclarationProxy.Config;
+
+
 
 namespace CustomsDeclarationProxy
 {
@@ -25,15 +29,20 @@ namespace CustomsDeclarationProxy
 
             //在运行程序开始时运行的代码
             Logger.Info("The CustomsDeclarationProxy Start...");
-            MessageReceiveThread.startThread();
 
+            //ConfigUtil cf = ConfigUtil.createInstance();
+           // MsgQueue customsGoodsRespQueue = new MsgQueue().Createqueue(cf.getDeclMsgQueueAddr("customsGoodsRespUrl"));
+            //Thread test = new Thread(new ThreadStart(new MsgListen(customsGoodsRespQueue, CustomsMessageType.GOODS, SendPlace.GOVERNMENT).ThreadProc));
+            
+            MessageReceiveThread.startThread();
+          
 
         }
 
 
         void Application_End(object sender, EventArgs e)
         {
-            MessageReceiveThread.stopThread();
+           MessageReceiveThread.stopThread();
             Logger.Info("The CustomsDeclarationProxy Stop...");
         }
 

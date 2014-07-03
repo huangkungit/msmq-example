@@ -11,6 +11,10 @@ using CustomsDeclarationProxy.Log;
 using CustomsDeclarationProxy.Service;
 using CustomsDeclarationProxy.Factory;
 using CustomsDeclarationProxy.Constant;
+using CustomsDeclarationProxy.Util;
+using System.Text;
+using CustomsDeclarationProxy.Config;
+
 namespace CustomsDeclarationProxy.Hessian
 {
     public class DeclareProxyAPI : CHessianHandler, IDeclareProxyAPI
@@ -18,15 +22,17 @@ namespace CustomsDeclarationProxy.Hessian
 
         private MessageDeclService messageDeclService = MessageDeclService.createInstance();
         private MessageRespService messageRespService = MessageRespService.createInstance();
+        private ConfigUtil configUtil = ConfigUtil.createInstance();
         private MsgQueueFactory mqFactory = new MsgQueueFactory();
         private MsgQueue mq = null;
 
-        public Boolean sendDeclMessage(string messageId, string outId, int sendType, string messageDetail)
+        public Boolean sendDeclMessage(string messageId, string outId, int sendType, string messageDetail, int place)
         {
             if (messageId == null && messageId == ""
                 && outId == null && outId == ""
                 && messageDetail == null && messageDetail == ""
-                && sendType == 0)
+                && sendType == 0
+                && place == 0)
             {
                 return false;
             }
@@ -34,7 +40,7 @@ namespace CustomsDeclarationProxy.Hessian
 
             try
             {
-                mq = mqFactory.CreateMsgQueueFactory(sendType);
+                mq = mqFactory.CreateMsgQueueFactory(sendType, place);
                 
                 
                 using (TransactionScope scope = new TransactionScope())
@@ -43,15 +49,28 @@ namespace CustomsDeclarationProxy.Hessian
                     msgTransaction.Begin();
                     XmlDocument xmldoc = new XmlDocument();
 
-                    xmldoc.LoadXml(messageDetail);
-                    messageDetail = xmldoc.InnerXml;
+                    
 
+                    if (place == (int)SendPlace.GOVERNMENT)
+                    {
+
+                        String key = configUtil.getGovPwd();
+                        messageDetail = AESUtil.AesEncoding(xmldoc.InnerXml, key, Encoding.UTF8);
+                        xmldoc.Load(messageDetail);
+                        mq.SendEncryptMessage(messageDetail, msgTransaction, messageId);
+                    }
+                    else
+                    {
+                       
+                        xmldoc.LoadXml(messageDetail);
+                        mq.SendMessage(xmldoc, msgTransaction, messageId);
+                    }
                     Logger.Debug(messageDetail);
 
-                    messageDeclService.createDeclMessage(messageId, outId, sendType, messageDetail);
-                    messageRespService.createResponseMessage(messageId, outId, sendType);
+                    messageDeclService.createDeclMessage(messageId, outId, sendType, messageDetail,place);
+                    messageRespService.createResponseMessage(messageId, outId, sendType,place);
 
-                    mq.SendMessage(xmldoc, msgTransaction, messageId);
+                   
 
                     scope.Complete();
                     msgTransaction.Commit();                  
@@ -74,9 +93,9 @@ namespace CustomsDeclarationProxy.Hessian
 
         }
 
-        public String getResponseMessageByMessageId(string msgId, int type)
+        public String getResponseMessageByMessageId(string msgId, int type, int place)
         {
-           return  messageRespService.getRespMsgDetailByMsgId(msgId, type);
+           return  messageRespService.getRespMsgDetailByMsgId(msgId, type, place);
 
         }
 

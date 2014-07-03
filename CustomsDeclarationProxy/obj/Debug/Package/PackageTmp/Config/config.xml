@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <goodsDeclUrl>FormatName:Direct=TCP:192.168.67.2\private$\LITB_GOODS_APL</goodsDeclUrl>
+  <manifestDeclUrl>FormatName:Direct=TCP:192.168.67.2\private$\LITB_DECL_APL</manifestDeclUrl>
+  <orderDeclUrl>FormatName:Direct=TCP:192.168.67.2\private$\LITB_ORDER_APL</orderDeclUrl>
+  <goodsRespUrl>.\private$\LITB_GOODS_RESP_APL</goodsRespUrl>
+  <manifestRespUrl>.\private$\LITB_DECL_RESP_APL</manifestRespUrl>
+  <orderDeclUrl>.\private$\LITB_ORDER_RESP_APL</orderDeclUrl>
+
+  <responseHelper>
+    <goods>
+      <ns>urn:Declaration:datamodel:standard:CN:NJHGKJ_100:1</ns>
+      <outId>XmlMessage/Response/EX_GOODS_INFO/OUT_ID</outId>
+      <recMsgId>XmlMessage/MessageHead/MessageID</recMsgId>
+    </goods>
+    <manifest>
+      <ns>urn:Declaration:datamodel:standard:CN:NJHGKJ_110:1</ns>
+      <outId>XmlMessage/Response/EX_DECL_HEAD/OUT_DECL_NO</outId>
+      <recMsgId>XmlMessage/MessageHead/MessageID</recMsgId>
+    </manifest>
+    <order>
+      <ns>urn:Declaration:datamodel:standard:CN:NJHGKJ_120:1</ns>
+      <outId>XmlMessage/Response/ORDER_FORM_HEAD/ORG_ORDER_NO</outId>
+      <recMsgId>XmlMessage/MessageHead/MessageID</recMsgId>
+    </order>
+  </responseHelper>
+</config>

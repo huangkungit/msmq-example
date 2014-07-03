@@ -13,6 +13,7 @@
     <Property Name="out_decl_no" Type="String" />
     <Property Name="message_type" Type="Int32" />
     <Property Name="message_detail" Type="String" />
+    <Property Type="Int64" Name="send_place" />
   </EntityType>
   <EntityType Name="resp_message">
     <Key>
@@ -24,5 +25,6 @@
     <Property Name="message_type" Type="Int32" />
     <Property Name="message_detail" Type="String" />
     <Property Name="out_decl_no" Type="String" />
+    <Property Type="Int64" Name="send_place" />
   </EntityType>
 </Schema>

@@ -10,6 +10,7 @@ using CustomsDeclarationProxy.Log;
 
 
 
+
 namespace CustomsDeclarationProxy.Message
 {
     public class MsgQueue
@@ -30,6 +31,7 @@ namespace CustomsDeclarationProxy.Message
 
         private MessageQueue mq; 
 
+        
 
         public MsgQueue Createqueue(string path)
         {
@@ -77,6 +79,32 @@ namespace CustomsDeclarationProxy.Message
             }
         }
 
+
+        /// <summary>
+        /// 连接消息队列并发送消息到队列(加密)
+        /// </summary>
+        public void SendEncryptMessage(string encryptMsg, MessageQueueTransaction msgTransaction, string messageId)
+        {
+            try
+            {
+                //连接到接受消息的队列
+                System.Messaging.Message myMessage = new System.Messaging.Message();
+                myMessage.Body = encryptMsg;
+                myMessage.Label = messageId;
+                //发送消息到队列中
+                // mq.Send(myMessage, MessageQueueTransactionType.Automatic);
+                mq.Send(myMessage, msgTransaction);
+                Logger.Info(messageId + "send encrypt message success！");
+
+            }
+            catch (Exception e)
+            {
+                Logger.Error("send encrypt message fail!", e);
+                throw e;
+
+            }
+        }
+
         /// <summary>
         /// 连接消息队列并从队列中接收消息
         /// </summary>
@@ -95,6 +123,7 @@ namespace CustomsDeclarationProxy.Message
             {
                 if (e.MessageQueueErrorCode != MessageQueueErrorCode.IOTimeout)
                 {
+                 
                     throw e;
                 }
                 return null;
