@@ -55,13 +55,12 @@ namespace CustomsDeclarationProxy.Hessian
                     {
 
                         String key = configUtil.getGovPwd();
-                        messageDetail = AESUtil.AesEncoding(xmldoc.InnerXml, key, Encoding.UTF8);
-                        xmldoc.Load(messageDetail);
+                        messageDetail = AESUtil.AesEncoding(messageDetail, key, Encoding.UTF8);
+                 
                         mq.SendEncryptMessage(messageDetail, msgTransaction, messageId);
                     }
                     else
                     {
-                       
                         xmldoc.LoadXml(messageDetail);
                         mq.SendMessage(xmldoc, msgTransaction, messageId);
                     }

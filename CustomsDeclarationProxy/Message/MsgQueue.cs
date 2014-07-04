@@ -89,6 +89,7 @@ namespace CustomsDeclarationProxy.Message
             {
                 //连接到接受消息的队列
                 System.Messaging.Message myMessage = new System.Messaging.Message();
+                myMessage.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });
                 myMessage.Body = encryptMsg;
                 myMessage.Label = messageId;
                 //发送消息到队列中
