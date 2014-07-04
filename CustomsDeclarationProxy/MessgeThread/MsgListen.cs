@@ -71,15 +71,15 @@ namespace CustomsDeclarationProxy.MessageThread
                             string recMsgId = "";
                             try
                             {
-                                outId = RespUtil.getOutIdFromResp(doc, cmt, sendPlace);
-                                recMsgId = RespUtil.getRecMsgIdFromResp(doc, cmt, sendPlace);
+                                outId = RespUtil.getOutIdFromResp(doc, cmt);
+                                recMsgId = RespUtil.getRecMsgIdFromResp(doc, cmt);
                             }
                             catch (Exception e)
                             {
                                 Logger.Error("Can't get the outId or recMsgId from RespMsg", e);
                             }
    
-                            msgRespService.updateRespMsgDetail(outId, xmlmsg, recMsgId, (int)cmt, (int)sendPlace);                       
+                            msgRespService.updateRespMsgDetail(outId, xmlmsg, recMsgId, (int)cmt);                       
 
                             
                             respTransaction.Complete();

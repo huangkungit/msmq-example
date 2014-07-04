@@ -70,20 +70,20 @@ namespace CustomsDeclarationProxy.Config
         */
 
 
-        public String getOutIdPath(CustomsMessageType cmt, String des)
+        public String getOutIdPath(CustomsMessageType cmt)
         {
            
             if (cmt == CustomsMessageType.GOODS)
             {
-                return doc.SelectSingleNode("config/responseHelper/"+ des +"/goods/outId").InnerText;
+                return doc.SelectSingleNode("config/responseHelper/customs/goods/outId").InnerText;
             }
             else if (cmt == CustomsMessageType.MANIFEST)
             {
-                return doc.SelectSingleNode("config/responseHelper/"+ des +"/manifest/outId").InnerText;
+                return doc.SelectSingleNode("config/responseHelper/customs/manifest/outId").InnerText;
             }
             else if (cmt == CustomsMessageType.ORDER)
             {
-                return doc.SelectSingleNode("config/responseHelper/"+ des +"order/outId").InnerText;
+                return doc.SelectSingleNode("config/responseHelper/customs/order/outId").InnerText;
             }
                 
 
@@ -91,19 +91,19 @@ namespace CustomsDeclarationProxy.Config
         }
 
 
-        public String getRecMsgIdPathByMsgType(CustomsMessageType cmt, String des)
+        public String getRecMsgIdPathByMsgType(CustomsMessageType cmt)
         {
             if (cmt == CustomsMessageType.GOODS)
             {
-                return doc.SelectSingleNode("config/responseHelper/" + des + "/goods/recMsgId").InnerText;
+                return doc.SelectSingleNode("config/responseHelper/customs/goods/recMsgId").InnerText;
             }
             else if (cmt == CustomsMessageType.MANIFEST)
             {
-                return doc.SelectSingleNode("config/responseHelper/" + des + "/manifest/recMsgId").InnerText;
+                return doc.SelectSingleNode("config/responseHelper/customs/manifest/recMsgId").InnerText;
             }
             else if (cmt == CustomsMessageType.ORDER)
             {
-                return doc.SelectSingleNode("config/responseHelper/" + des + "/order/recMsgId").InnerText;
+                return doc.SelectSingleNode("config/responseHelper/customs/order/recMsgId").InnerText;
             }
 
             return "";

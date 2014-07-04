@@ -26,13 +26,13 @@ namespace CustomsDeclarationProxy.Hessian
         private MsgQueueFactory mqFactory = new MsgQueueFactory();
         private MsgQueue mq = null;
 
-        public Boolean sendDeclMessage(string messageId, string outId, int sendType, string messageDetail, int place)
+        public Boolean sendDeclMessage(string messageId, string outId, int sendType, string messageDetail)
         {
             if (messageId == null && messageId == ""
                 && outId == null && outId == ""
                 && messageDetail == null && messageDetail == ""
                 && sendType == 0
-                && place == 0)
+              )
             {
                 return false;
             }
@@ -40,7 +40,7 @@ namespace CustomsDeclarationProxy.Hessian
 
             try
             {
-                mq = mqFactory.CreateMsgQueueFactory(sendType, place);
+                mq = mqFactory.CreateMsgQueueFactory(sendType);
                 
                 
                 using (TransactionScope scope = new TransactionScope())
@@ -49,25 +49,14 @@ namespace CustomsDeclarationProxy.Hessian
                     msgTransaction.Begin();
                     XmlDocument xmldoc = new XmlDocument();
 
+                   
+                    xmldoc.LoadXml(messageDetail);
+                    mq.SendMessage(xmldoc, msgTransaction, messageId);
                     
-
-                    if (place == (int)SendPlace.GOVERNMENT)
-                    {
-
-                        String key = configUtil.getGovPwd();
-                        messageDetail = AESUtil.AesEncoding(messageDetail, key, Encoding.UTF8);
-                 
-                        mq.SendEncryptMessage(messageDetail, msgTransaction, messageId);
-                    }
-                    else
-                    {
-                        xmldoc.LoadXml(messageDetail);
-                        mq.SendMessage(xmldoc, msgTransaction, messageId);
-                    }
                     Logger.Debug(messageDetail);
 
-                    messageDeclService.createDeclMessage(messageId, outId, sendType, messageDetail,place);
-                    messageRespService.createResponseMessage(messageId, outId, sendType,place);
+                    messageDeclService.createDeclMessage(messageId, outId, sendType, messageDetail);
+                    messageRespService.createResponseMessage(messageId, outId, sendType);
 
                    
 
@@ -79,7 +68,7 @@ namespace CustomsDeclarationProxy.Hessian
             } catch (Exception e)
             {
                 msgTransaction.Abort();
-                if ((int)CustomsDeclarationProxy.Constant.CustomsMessageType.MANIFEST== sendType)
+                if ((int)CustomsDeclarationProxy.Constant.CustomsMessageType.MANIFEST == sendType)
                 {
                     Logger.Error("shipmentPackId:" + outId + "send and insert manifest message failed!", e);
                 }
@@ -92,9 +81,9 @@ namespace CustomsDeclarationProxy.Hessian
 
         }
 
-        public String getResponseMessageByMessageId(string msgId, int type, int place)
+        public String getResponseMessageByMessageId(string msgId, int type)
         {
-           return  messageRespService.getRespMsgDetailByMsgId(msgId, type, place);
+           return  messageRespService.getRespMsgDetailByMsgId(msgId, type);
 
         }
 

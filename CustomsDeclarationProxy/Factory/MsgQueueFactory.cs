@@ -10,8 +10,9 @@ namespace CustomsDeclarationProxy.Factory
     public class MsgQueueFactory
     {
         public ConfigUtil configUtil = ConfigUtil.createInstance();
-        public MsgQueue CreateMsgQueueFactory(int type, int place)
+        public MsgQueue CreateMsgQueueFactory(int type)
         {
+            int place = 1;
             if (place == (int)SendPlace.CUSTOMS)
             {
                 if (type == (int)CustomsMessageType.GOODS)

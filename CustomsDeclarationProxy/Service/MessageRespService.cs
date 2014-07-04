@@ -28,30 +28,30 @@ namespace CustomsDeclarationProxy.Service
             return messageResponseService;
         }
 
-        public void createResponseMessage(string sendMessageId, string outId, int msgType, int place)
+        public void createResponseMessage(string sendMessageId, string outId, int msgType)
         {
             resp_message rm = new resp_message();
             rm.send_message_id = sendMessageId;
             rm.message_type = msgType;
             rm.out_decl_no = outId;
-            rm.send_place = place;
+            rm.send_place = 1;
             mrd.insertData(rm);
 
         }
 
-        public String queryMessageDetail(string id, int type, int place)
+        public String queryMessageDetail(string id, int type)
         {
-            return mrd.queryMessageDetail(id, type, place);
+            return mrd.queryMessageDetail(id, type);
         }
 
-        public void updateRespMsgDetail(string outId, string msgDetail, string recMsgId, int type, int place)
+        public void updateRespMsgDetail(string outId, string msgDetail, string recMsgId, int type)
         {
-            mrd.updateRespMsgDetail(outId, msgDetail,recMsgId, type, place);
+            mrd.updateRespMsgDetail(outId, msgDetail,recMsgId, type);
         }
 
-        public string getRespMsgDetailByMsgId(string msgId, int type, int place)
+        public string getRespMsgDetailByMsgId(string msgId, int type)
         {
-            return mrd.getRespMsgDetailByMsgId(msgId, type, place);
+            return mrd.getRespMsgDetailByMsgId(msgId, type);
         }
     }
 }
