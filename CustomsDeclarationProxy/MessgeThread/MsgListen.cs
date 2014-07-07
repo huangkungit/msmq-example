@@ -54,16 +54,22 @@ namespace CustomsDeclarationProxy.MessageThread
                             continue;
                         }
 
-                        if ((XmlDocument)msg.Body != null)
+                        if (msg.Body != null)
                         {
                             string xmlmsg = "";
-                            xmlmsg = ((XmlDocument)msg.Body).InnerXml; //get the message;
+                           
 
                             XmlDocument doc = new XmlDocument();
                             if (sendPlace == SendPlace.GOVERNMENT)
                             {
+                                xmlmsg = msg.Body.ToString();
                                 String key = configUtil.getGovPwd();
                                 xmlmsg = AESUtil.AesDecoding(xmlmsg, key, Encoding.UTF8);
+                            }
+                            else
+                            {
+                                xmlmsg = ((XmlDocument)msg.Body).InnerXml; //get the message;
+
                             }
                             doc.LoadXml(xmlmsg);
 
