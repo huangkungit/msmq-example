@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<parameters>
-  <parameter name="cdiEntities-Web.config Connection String" description="cdiEntities 应用程序在 web.config 中用来访问数据库的连接字符串。" defaultvalue="metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=MySql.Data.MySqlClient;provider connection string=&quot;server=192.168.66.32;User Id=db_admin;password=light2902;Persist Security Info=True;AutoEnlist=False;database=cdi&quot;" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='cdiEntities']/@connectionString" />
-  </parameter>
-</parameters>
