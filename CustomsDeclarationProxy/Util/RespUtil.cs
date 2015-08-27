@@ -14,8 +14,6 @@ namespace CustomsDeclarationProxy.Util
         public static ConfigUtil cu = ConfigUtil.createInstance();
         public static string getOutIdFromResp(XmlDocument doc, CustomsMessageType cmt, SendPlace sp)
         {
-            //XmlNamespaceManager xmlns = new XmlNamespaceManager(doc.NameTable);
-           // xmlns.AddNamespace("nm", cu.getNameSpaceByMsgType(cmt));
 
             string des = getTheSendPlace(sp);
             string outDeclNo = doc.SelectSingleNode(cu.getOutIdPath(cmt,des)).InnerText;
@@ -25,8 +23,7 @@ namespace CustomsDeclarationProxy.Util
 
         public static string getRecMsgIdFromResp(XmlDocument doc, CustomsMessageType cmt, SendPlace sp)
         {
-           // XmlNamespaceManager xmlns = new XmlNamespaceManager(doc.NameTable);
-           // xmlns.AddNamespace("nm", cu.getNameSpaceByMsgType(cmt));
+
             string des = getTheSendPlace(sp);
             string recMsgId = doc.SelectSingleNode(cu.getRecMsgIdPathByMsgType(cmt, des)).InnerText;
             return recMsgId;
