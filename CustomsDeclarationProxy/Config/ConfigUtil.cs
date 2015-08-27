@@ -49,27 +49,6 @@ namespace CustomsDeclarationProxy.Config
             return doc.SelectSingleNode("config/" + str).InnerText;
         }
 
-        /*
-        public String getNameSpaceByMsgType(CustomsMessageType cmt)
-        {
-            if (cmt == CustomsMessageType.GOODS)
-            {
-                return doc.SelectSingleNode("config/responseHelper/goods/ns").InnerText;
-            }
-            else if (cmt == CustomsMessageType.MANIFEST)
-            {
-                return doc.SelectSingleNode("config/responseHelper/manifest/ns").InnerText;
-            }
-            else if (cmt == CustomsMessageType.ORDER)
-            {
-                return doc.SelectSingleNode("config/responseHelper/order/ns").InnerText;
-            }
-
-            return "";
-        }
-        */
-
-
         public String getOutIdPath(CustomsMessageType cmt, String des)
         {
            
