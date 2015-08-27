@@ -15,11 +15,6 @@ namespace CustomsDeclarationProxy.Message
 {
     public class MsgQueue
     {
-        /// <summary>
-        /// 通过Create方法创建使用指定路径的新消息队列
-        /// </summary>
-        /// <param name="queuePath"></param>
-        /// 
 
         private String queuePath;
 
@@ -46,7 +41,6 @@ namespace CustomsDeclarationProxy.Message
             }
             catch (MessageQueueException e)
             {
-                //MessageBox.Show(e.Message);
                 Logger.Error("connect messageQueue: " + QueuePath + "fail!", e);
             }
 
@@ -54,19 +48,15 @@ namespace CustomsDeclarationProxy.Message
 
         }
 
-        /// <summary>
-        /// 连接消息队列并发送消息到队列
-        /// </summary>
+
         public void SendMessage(XmlDocument xmldoc, MessageQueueTransaction msgTransaction, string messageId)
         {
             try
             {
-                //连接到接受消息的队列
+
                 System.Messaging.Message myMessage = new System.Messaging.Message();               
                 myMessage.Body = xmldoc;
                 myMessage.Label = messageId;
-                //发送消息到队列中
-               // mq.Send(myMessage, MessageQueueTransactionType.Automatic);
                 mq.Send(myMessage, msgTransaction);       
                 Logger.Info(messageId + "send message success！");
 
@@ -80,20 +70,15 @@ namespace CustomsDeclarationProxy.Message
         }
 
 
-        /// <summary>
-        /// 连接消息队列并发送消息到队列(加密)
-        /// </summary>
         public void SendEncryptMessage(string encryptMsg, MessageQueueTransaction msgTransaction, string messageId)
         {
             try
             {
-                //连接到接受消息的队列
+
                 System.Messaging.Message myMessage = new System.Messaging.Message();
                 myMessage.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });
                 myMessage.Body = encryptMsg;
                 myMessage.Label = messageId;
-                //发送消息到队列中
-                // mq.Send(myMessage, MessageQueueTransactionType.Automatic);
                 mq.Send(myMessage, msgTransaction);
                 Logger.Info(messageId + "send encrypt message success！");
 
@@ -106,12 +91,10 @@ namespace CustomsDeclarationProxy.Message
             }
         }
 
-        /// <summary>
-        /// 连接消息队列并从队列中接收消息
-        /// </summary>
+
         public System.Messaging.Message ReceiveMessage(MessageQueueTransaction msgTransaction)
         {
-            //连接到本地队列
+
             System.Messaging.Message msg = new System.Messaging.Message();
           
             try
@@ -132,10 +115,6 @@ namespace CustomsDeclarationProxy.Message
                              
         }
 
-
-        /// <summary>
-        /// 清空消息
-        /// </summary>
         public void ClearMessage()
         {
             if (MessageQueue.Exists(QueuePath))
