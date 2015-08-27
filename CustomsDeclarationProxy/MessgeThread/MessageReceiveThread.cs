@@ -77,7 +77,7 @@ namespace CustomsDeclarationProxy.MessageThread
                 for (counter = 0; counter < threadNumber; counter++)
                 {
                     receiveMessageThreadArray[counter].Join();
-                    Logger.Info(counter+"号监听关闭成功");
+                    Logger.Info(counter+" close sucess");
                 }
                 Logger.Info("stop message receive thread");
             }
